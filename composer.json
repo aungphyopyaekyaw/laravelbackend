@@ -1,0 +1,14 @@
+{
+    "name": "agphyo/backend",
+    "description": "Backend site",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aung Phyo Pyae Kyaw",
+            "email": "aungphyopyaekyaw@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
