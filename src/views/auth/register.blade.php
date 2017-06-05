@@ -14,20 +14,23 @@
       {{ csrf_field() }}
       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
         <input id="name" type="text" class="form-control" placeholder="Full name" name="name" required autofocus>
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
         @if ($errors->has('name'))
-        <span class="glyphicon glyphicon-user form-control-feedback">{{ $errors->first('name') }}</span>
+        {{ $errors->first('name') }}
         @endif
       </div>
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
         <input id="email" name="email" type="email" class="form-control" placeholder="Email" required>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
-        <span class="glyphicon glyphicon-envelope form-control-feedback">{{ $errors->first('email') }}</span>
+        {{ $errors->first('email') }}
         @endif
       </div>
       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
         <input id="password" name="password" type="password" class="form-control" placeholder="Password" required>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         @if ($errors->has('password'))
-        <span class="glyphicon glyphicon-lock form-control-feedback">{{ $errors->first('password') }}</span>
+        {{ $errors->first('password') }}
         @endif
       </div>
       <div class="form-group has-feedback">
@@ -36,7 +39,7 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
+          <div class="checkbox">
             <label>
               <input type="checkbox"> I agree to the <a href="#">terms</a>
             </label>
@@ -58,7 +61,7 @@
         Google+</a>
     </div>
 
-    <a href="login.html" class="text-center">I already have a membership</a>
+    <a href="{{ asset('login') }}" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>

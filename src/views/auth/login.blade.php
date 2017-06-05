@@ -14,19 +14,21 @@
       {{ csrf_field() }}
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
         <input id="email" name="email" type="email" class="form-control" placeholder="Email" required autofocus>
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
-        <span class="glyphicon glyphicon-envelope form-control-feedback">{{ $errors->first('email') }}</span>
+        {{ $errors->first('email') }}
         @endif
       </div>
       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
         <input id="password" name="password" type="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         @if ($errors->has('password'))
-        <span class="glyphicon glyphicon-lock form-control-feedback">{{ $errors->first('password') }}</span>
+        {{ $errors->first('password') }}
         @endif
       </div>
       <div class="row">
         <div class="col-xs-8">
-          <div class="checkbox icheck">
+          <div class="checkbox">
             <label>
               <input name="remember" type="checkbox">Remember Me
             </label>
