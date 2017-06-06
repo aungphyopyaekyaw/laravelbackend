@@ -33,14 +33,14 @@
                 <th>Role</th>
                 <th>Action</th>
               </tr>
-              @foreach($users as $user)
+              @foreach($usrs as $u)
               <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->type }}</td>
-                <td><a href="/user/{{ $user->id }}/edit"><button type="button" class="btn btn-default">Edit </button></a></td>
-                <td><form class="form" role="form" method="POST" action="{{ url('/user/'. $user->id) }}">
+                <td>{{ $u->id }}</td>
+                <td>{{ $u->name }}</td>
+                <td>{{ $u->email }}</td>
+                <td>{{ $u->type }}</td>
+                <td><a href="/user/{{ $u->id }}/edit"><button type="button" class="btn btn-default">Edit </button></a></td>
+                <td><form class="form" role="form" method="POST" action="{{ url('/user/'. $u->id) }}">
                   <input type="hidden" name="_method" value="delete">
                   {{ csrf_field() }}
                   <input class="btn btn-danger" Onclick="return ConfirmDelete();" type="submit" value="Delete"></form>
@@ -48,7 +48,7 @@
               </tr>
               @endforeach
             </table>
-            {{ $users->links() }}
+            {{ $usrs->links() }}
           </div>
           <!-- /.box-body -->
         </div>

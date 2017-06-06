@@ -6,15 +6,15 @@
 <div class="register-box-body">
   <p class="login-box-msg">Edit the user role</p>
 
-  <form action="{{ url('/user/'.$user->id) }}" method="POST">
+  <form action="{{ url('/user/'.$users->id) }}" method="POST">
     <input type="hidden" name="_method" value="patch">
     {{ csrf_field() }}
     <div class="form-group has-feedback">
-      <input id="name" name="name" type="text" value="{{ $user->name }}" class="form-control" placeholder="{{ old('name') }}">
+      <input id="name" name="name" type="text" value="{{ $users->name }}" class="form-control" placeholder="{{ old('name') }}">
       <span class="glyphicon glyphicon-user form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">
-      <input id="email" name="email" value="{{ $user->email }}" type="email" class="form-control" placeholder="{{ old('email') }}">
+      <input id="email" name="email" value="{{ $users->email }}" type="email" class="form-control" placeholder="{{ old('email') }}">
       <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
     <div class="form-group has-feedback">

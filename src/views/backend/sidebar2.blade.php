@@ -198,15 +198,15 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-<script src="{{ asset('backend/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+<script src="{{ asset('asset/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{ asset('backend/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
-<script src="{{ asset('backend/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('asset/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
-<script src="{{ asset('backend/plugins/fastclick/fastclick.js') }}"></script>
+<script src="{{ asset('asset/plugins/fastclick/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('backend/dist/js/app.min.js') }}"></script>
+<script src="{{ asset('asset/dist/js/app.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('backend/dist/js/demo.js') }}"></script>
+<script src="{{ asset('asset/dist/js/demo.js') }}"></script>
 </body>

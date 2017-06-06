@@ -10,9 +10,12 @@ use App\User;
 
 class UserController extends Controller {
 
+  protected $user;
+
     public function __construct() {
         $this->middleware('auth');
         $this->middleware(function ($request, $next) {
+          $this->user = Auth::user();
           if(Auth::user()->type <> 'administrator') {
               return redirect('backend');
           }
@@ -27,8 +30,9 @@ class UserController extends Controller {
     public function index()
     {
         //
-        $users = User::paginate(50);
-        return view('backend.usr_index', compact('users'));
+        $user = $this->user;
+        $usrs = User::paginate(50);
+        return view('backend.usr_index', compact('usrs', 'user'));
     }
 
     /**
@@ -39,7 +43,8 @@ class UserController extends Controller {
     public function create()
     {
         //
-        return view('backend.create_user');
+        $user = $this->user;
+        return view('backend.create_user', compact('user'));
     }
 
     /**
@@ -81,8 +86,9 @@ class UserController extends Controller {
     public function edit($id)
     {
         //
-        $user = User::findOrFail($id);
-        return view('backend.edit_user', compact('user'));
+        $user = $this->user;
+        $users = User::findOrFail($id);
+        return view('backend.edit_user', compact('users', 'user'));
     }
 
     /**
