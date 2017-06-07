@@ -9,6 +9,10 @@
             "email": "aungphyopyaekyaw@gmail.com"
         }
     ],
-    "minimum-stability": "beta",
-    "require": {}
+    "minimum-stability": "1.0.*",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Agphyo\\Backend\\": "src"
+        }
 }
