@@ -9,6 +9,6 @@
             "email": "aungphyopyaekyaw@gmail.com"
         }
     ],
-    "minimum-stability": "1.0.*",
+    "minimum-stability": "RC",
     "require": {}
 }
