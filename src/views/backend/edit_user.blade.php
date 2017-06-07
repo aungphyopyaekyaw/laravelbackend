@@ -24,9 +24,10 @@
     <div class="form-group has-feedback">
       <!-- <input id="type" name="type" type="text" class="form-control" placeholder="User type"> -->
       <select id="s_type" onchange="run()">
+        <option value="subscriber" selected="selected">Select One</option>
         <option value="administrator">Administrator</option>
         <option value="user">User | Editor</option>
-        <option value="subscriber" selected="selected">Subscriber</option>
+        <option value="subscriber">Subscriber</option>
       </select>
       <input type="text" id="type" name="type" class="hidden"><br>
       <span class="glyphicon glyphicon-log-in form-control-feedback"></span>

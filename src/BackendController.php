@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use App\Blog;
 use App\User;
 
 class BackendController extends Controller {
@@ -26,7 +27,8 @@ class BackendController extends Controller {
 
     public function profile() {
         $user = $this->user;
-        return view('backend.profile', compact('user'));
+        $blog = Blog::where('author_id', $this->user->id)->paginate(5);
+        return view('backend.profile', compact('user', 'blog'));
     }
 
     public function upload(Request $request) {

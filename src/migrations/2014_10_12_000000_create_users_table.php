@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('image')->nullable();
-            $table->enum('name', ['administrator', 'user', 'subscriber'])->default('subscriber');
+            $table->string('image')->default('/public/asset/dist/img/avatar5.png');
+            $table->enum('type', ['administrator', 'user', 'subscriber'])->default('subscriber');
             $table->rememberToken();
             $table->timestamps();
         });

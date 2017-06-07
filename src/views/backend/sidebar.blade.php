@@ -5,7 +5,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ $user->image }}" class="img-circle" alt="User Image">
+          <img src="{{ Auth::user()->image }}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>{{ Auth::user()->name }}</p>
@@ -17,14 +17,28 @@
         @if(Auth::user()->type == 'administrator')
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-users"></i> <span>Manage Users</span>
+            <i class="fa fa-user"></i> <span>Manage Users</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/user"><i class="fa fa-circle-o"></i> List all</a></li>
-            <li><a href="/user/create"><i class="fa fa-circle-o"></i> Create one</a></li>
+            <li><a href="/user"><i class="fa fa-users"></i> List all</a></li>
+            <li><a href="/user/create"><i class="fa fa-user-plus"></i> Create one</a></li>
+          </ul>
+        </li>
+        @endif
+        @if(Auth::user()->type <> 'subscriber')
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-newspaper-o"></i> <span>Manage Posts</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="/b"><i class="fa fa-list"></i> List all</a></li>
+            <li><a href="/b/create"><i class="fa fa-plus-square-o"></i> Create one</a></li>
           </ul>
         </li>
         @endif
