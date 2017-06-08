@@ -119,7 +119,7 @@ class BlogController extends Controller
           $duplicate = Blog::where('slug',$slug)->first();
           if($duplicate) {
             if($duplicate->id != $post_id) {
-              return redirect('b/edit/'.$blog->slug)->withErrors('Title already exists.')->withInput();
+              return redirect('b/'.$blog->slug.'/edit')->withErrors('Title already exists.')->withInput();
             }
             else {
               $blog->slug = $slug;
@@ -148,7 +148,7 @@ class BlogController extends Controller
             $landing = $blog->slug;
           }
           $blog->save();
-          return redirect('b');
+          return redirect('b/'.$landing);
         }
         else {
           return redirect('/')->withErrors('you have not sufficient permissions');
