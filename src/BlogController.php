@@ -140,7 +140,7 @@ class BlogController extends Controller
           if($request->has('save')) {
             $blog->active = 0;
             $message = 'Post saved successfully';
-            $landing = 'b/'.$blog->slug.'/edit';
+            $landing = $blog->slug.'/edit';
           }
           else {
             $blog->active = 1;
