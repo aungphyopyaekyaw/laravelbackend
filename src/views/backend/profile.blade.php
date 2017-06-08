@@ -1,7 +1,13 @@
 @extends('backend.base')
 @section('content')
 <div class="content-wrapper">
-
+<style media="screen">
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+    display: block;
+    width: 110px;
+    height: 110px;
+}
+</style>
   <!-- Main content -->
   <section class="content">
 

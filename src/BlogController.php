@@ -15,11 +15,9 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //fetch 5 posts from database which are active and latest
-        $blog = Blog::where('active',1)->orderBy('created_at','desc')->paginate(5);
-        //return home.blade.php template from resources/views folder
+        $blog = Blog::where('author_id', $request->user()->id)->orderBy('created_at','desc')->paginate(5);
         return view('blog.index', compact('blog'));
     }
 

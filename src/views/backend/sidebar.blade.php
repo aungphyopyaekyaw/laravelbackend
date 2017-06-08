@@ -4,6 +4,13 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <div class="user-panel">
+        <style media="screen">
+        .user-panel>.image>img {
+          width: 45px;
+          max-width: 45px;
+          height: 45px;
+          }
+        </style>
         <div class="pull-left image">
           <img src="{{ Auth::user()->image }}" class="img-circle" alt="User Image">
         </div>
@@ -41,8 +48,14 @@
             <li><a href="/b/create"><i class="fa fa-plus-square-o"></i> Create one</a></li>
           </ul>
         </li>
+        @else
+        <li class="treeview">
+          <a href="/b">
+            <i class="fa fa-newspaper-o"></i> <span>List Posts</span>
+          </a>
+        </li>
         @endif
-        <li><a href="documentation"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+        <li><a href="{{ asset('documentation') }}"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
