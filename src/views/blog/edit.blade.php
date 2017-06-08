@@ -5,11 +5,6 @@
   <div class="box">
     <div class="box-header">
       <h3 class="box-title">Create new post</h3>
-      <span>
-        @foreach ($errors->all() as $error)
-        <div>{{ $error }}</div>
-        @endforeach
-      </span>
     <!-- tools box -->
     <div class="pull-right box-tools">
       <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -20,6 +15,11 @@
     <!-- /. tools -->
     </div>
     <div class="box-body pad">
+      <span>
+        @foreach ($errors->all() as $error)
+        <div class="callout callout-info">{{ $error }}</div>
+        @endforeach
+      </span>
       <form action="{{ asset('b/'.$blog->slug) }}" method="post" enctype="multipart/form-data">
         <input type="hidden" name="_method" value="patch">
         {{ csrf_field() }}

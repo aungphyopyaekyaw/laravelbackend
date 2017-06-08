@@ -61,4 +61,9 @@ class BackendController extends Controller {
         return redirect('profile');
     }
 
+    public function draft() {
+        $blog = Blog::where([['author_id', $this->user->id], ['active', 0],])->orderBy('created_at','desc')->paginate(5);
+        return view('blog.index', compact('blog'));
+    }
+
 }

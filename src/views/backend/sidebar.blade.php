@@ -45,6 +45,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/b"><i class="fa fa-list"></i> List all</a></li>
+            <li><a href="/b/draft"><i class="fa fa-outdent"></i> Show draft</a></li>
             <li><a href="/b/create"><i class="fa fa-plus-square-o"></i> Create one</a></li>
           </ul>
         </li>

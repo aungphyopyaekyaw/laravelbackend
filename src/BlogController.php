@@ -148,7 +148,7 @@ class BlogController extends Controller
             $landing = $blog->slug;
           }
           $blog->save();
-          return redirect('b/'.$landing);
+          return redirect('b/'.$landing)->withErrors($message);
         }
         else {
           return redirect('/')->withErrors('you have not sufficient permissions');
@@ -172,4 +172,5 @@ class BlogController extends Controller
         }
         return redirect('b/')->with($data);
     }
+
 }

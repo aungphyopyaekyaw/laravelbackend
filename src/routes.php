@@ -12,6 +12,7 @@ Route::group(['middleware' => 'web'], function () {
   //user route end
 
   //blog route start
+    Route::get('/b/draft', 'agphyo\backend\BackendController@draft');
     Route::resource('/b', 'agphyo\backend\BlogController');
     Route::post('/comment/add', 'agphyo\backend\CommentController@store');
   //blog route end
