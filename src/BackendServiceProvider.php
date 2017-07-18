@@ -22,7 +22,7 @@ class BackendServiceProvider extends ServiceProvider
           __DIR__.'/migrations' => base_path('database/migrations'),
           __DIR__.'/Requests' => base_path('app/Http/Requests'),
           __DIR__.'/models' => base_path('app'),
-        ]);
+        ], 'backend');
     }
 
     /**
