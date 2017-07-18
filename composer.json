@@ -9,11 +9,13 @@
             "email": "aungphyopyaekyaw@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {},
+    "require": {
+      "laravel/framework": "5.4.*"
+    },
     "autoload": {
-	"psr-4": {
-	   "Agphyo\\Backend\\"	: "src/",
-	}
-    }
+	     "psr-4": {
+         "Agphyo\\Backend\\"	: "src/"
+	      }
+    },
+    "minimum-stability": "stable"
 }
