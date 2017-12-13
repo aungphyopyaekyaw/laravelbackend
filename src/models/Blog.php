@@ -15,4 +15,8 @@ class Blog extends Model
     public function author() {
       return $this->belongsTo('App\User','author_id');
     }
+
+    public function category() {
+      return $this->belongsToMany('App\Category')->withTimestamps();
+    }
 }

@@ -32,7 +32,7 @@ form input[type="submit"]{
         @else
         Page does not exist
         @endif
-        <p>{{ $blog->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$blog->author_id)}}">{{ $blog->author->name }}</a></p>
+        <p>{{$blog->category->first()->name}} | {{ $blog->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$blog->author_id)}}">{{ $blog->author->name }}</a></p>
         </div>
         @if($blog)
           <div class="panel-body">

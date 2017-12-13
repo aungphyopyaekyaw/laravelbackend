@@ -4,6 +4,7 @@ namespace Agphyo\Backend;
 
 use App\Blog;
 use App\User;
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostFormRequest;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        $blog = Blog::where('author_id', $request->user()->id)->orderBy('created_at','desc')->paginate(5);
+        $blog = Blog::where('author_id', $request->user()->id)
+        ->orderBy('created_at','desc')->with('category')->paginate(5);
         return view('blog.index', compact('blog'));
     }
 
@@ -30,7 +32,8 @@ class BlogController extends Controller
     {
         // if user can post i.e. user is admin or author
         if($request->user()->can_post()) {
-          return view('blog.create');
+          $category = Category::get()->all();
+          return view('blog.create', compact('category'));
         }
         else {
           return redirect('/')->withErrors('You have not sufficient permissions for writing post');
@@ -55,6 +58,9 @@ class BlogController extends Controller
           $image->move(public_path() . '/blogpics/' . $request->user()->id, $image->getClientOriginalName());
           $blog->image = '/blogpics/' . $request->user()->id . '/' . $image->getClientOriginalName();
         }
+        $category = Category::firstOrCreate([
+          'name' => $request->get('category')
+          ]);
         $blog->title = $request->get('title');
         $blog->body = $request->get('body');
         $blog->slug = str_slug($blog->title);
@@ -68,6 +74,7 @@ class BlogController extends Controller
           $message = 'Post published successfully';
         }
         $blog->save();
+        $blog->category()->attach($category);
         return redirect('b');
     }
 
@@ -79,7 +86,7 @@ class BlogController extends Controller
      */
     public function show($slug)
     {
-        $blog = Blog::where('slug',$slug)->first();
+        $blog = Blog::where('slug',$slug)->with('category')->first();
         if(!$blog) {
           return redirect('/')->withErrors('requested page not found');
         }
@@ -95,9 +102,10 @@ class BlogController extends Controller
      */
     public function edit(Request $request,$slug)
     {
-        $blog = Blog::where('slug',$slug)->first();
+        $blog = Blog::where('slug',$slug)->with('category')->first();
+        $category = Category::get()->all();
         if($blog && ($request->user()->id == $blog->author_id || $request->user()->is_admin()))
-        return view('blog.edit', compact('blog'));
+        return view('blog.edit', compact('blog', 'category'));
         return redirect('/')->withErrors('you have not sufficient permissions');
     }
 
@@ -133,7 +141,9 @@ class BlogController extends Controller
               $image->move(public_path() . '/blogpics/' . $request->user()->id, $image->getClientOriginalName());
               $blog->image = '/blogpics/' . $request->user()->id . '/' . $image->getClientOriginalName();
           }
-
+          $category = Category::firstOrCreate([
+            'name' => $request->get('category')
+            ]);
           $blog->title = $title;
           $blog->image = $blog->image;
           $blog->body = $request->input('body');
@@ -148,6 +158,7 @@ class BlogController extends Controller
             $landing = $blog->slug;
           }
           $blog->save();
+          $blog->category()->sync($category);
           return redirect('b/'.$landing)->withErrors($message);
         }
         else {

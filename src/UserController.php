@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use App\User;
+use App\Blog;
 
 class UserController extends Controller {
 
@@ -74,7 +75,9 @@ class UserController extends Controller {
      */
     public function show($id)
     {
-        return redirect('profile');
+      $user = User::where('id', $id)->first();
+      $blog = Blog::where('author_id', $id)->paginate(5);
+      return view('backend.profile', compact('user', 'blog'));
     }
 
     /**

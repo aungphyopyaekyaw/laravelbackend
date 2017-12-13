@@ -27,7 +27,19 @@
         <input required="required" name="title" value="{{ $blog->title }}" type="text" class="form-control" placeholder="Enter Title"><br>
         <textarea name="body" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{!! $blog->body !!}</textarea>
         <div class="form-group">
-        <input id="image" name="image" type="file">
+          <select class="selectpicker form-control" name="category">
+            @foreach($category as $c)
+              @if($c->name==$blog->category->first()->name)
+              <option value="{{$c->name}}" selected>{{$c->name}}</option>
+              @else
+              <option value="{{$c->name}}" >{{$c->name}}</option>
+              @endif
+            @endforeach
+          </select>
+        </div>
+        <div class="form-group">
+          <img src="{{$blog->image}}" onclick="showStuff('image')" width="100px">
+          <input id="image" name="image" style="display: none;" type="file">
         </div>
         <input type="submit" name='publish' class="btn btn-success" value = "Publish"/>
         <input type="submit" name='save' class="btn btn-default" value = "Save Draft" />
@@ -36,3 +48,19 @@
 </section>
 </div>
 @endsection
+
+@push('scripts')
+<script type="text/javascript">
+  $(".selectpicker").select2({
+    tags: true
+  });
+
+  function showStuff(id) {
+    if(document.getElementById(id).style.display === "block") {
+      document.getElementById(id).style.display = "none";
+    } else {
+      document.getElementById(id).style.display = "block";
+    }
+  }
+</script>
+@endpush

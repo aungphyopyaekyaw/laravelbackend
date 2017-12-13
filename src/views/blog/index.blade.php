@@ -32,7 +32,8 @@
 
           </div>
           <div class="box-footer">
-            <p>{{ $post->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a></p>
+            <p>{{ $post->created_at->format('M d,Y \a\t h:i a') }} By <a href="{{ url('/user/'.$post->author_id)}}">{{ $post->author->name }}</a>
+            <span style="float:right">Category : {{$post->category->first()->name}}</span></p>
           </div>
           <!-- /.box-body -->
         </div>
