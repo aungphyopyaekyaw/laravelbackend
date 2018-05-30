@@ -9,9 +9,6 @@
             "email": "aungphyopyaekyaw@gmail.com"
         }
     ],
-    "require": {
-      "laravel/framework": "5.*"
-    },
     "autoload": {
 	 "psr-4": {
          "Agphyo\\Backend\\"	: "src/"
