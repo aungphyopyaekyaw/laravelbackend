@@ -10,10 +10,10 @@
         }
     ],
     "require": {
-      "laravel/framework": "5.5.*"
+      "laravel/framework": "5.*"
     },
     "autoload": {
-	     "psr-4": {
+	 "psr-4": {
          "Agphyo\\Backend\\"	: "src/"
 	      }
     },
